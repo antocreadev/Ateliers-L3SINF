@@ -9,6 +9,8 @@ score_player2 = 0
 round_count= 0
 gameActive = False
 
+items_game = ['pierre', 'papier', 'ciseaux']
+
 # init players
 if input_init != 'O' and input_init != 'N' :
     print("Je n'ai pas compris votre réponse")
@@ -25,14 +27,15 @@ else :
         print("Bienvenu ",player2, " nous allons jouer ensemble \n")
         
 
-
+# game loop
 while gameActive== True:
     
     round_count+= 1 
     
     player_choice = input(f"{player} faîtes votre choix parmi (pierre, papier, ciseaux): ").lower()
     
-    if player_choice != 'pierre' and player_choice != 'papier' and player_choice != 'ciseaux' :
+    # loop to check if player choice is correct
+    if player_choice not in items_game:
                 player_choiceok = False
                 print("Je n'ai pas compris votre réponse")
                 
@@ -40,28 +43,28 @@ while gameActive== True:
                     print("Joueur ", player)
                     player_choice = input(" faîtes votre choix parmi (pierre, papier, ciseaux): ").lower()
                     player_choiceok = True
-                    if player_choice != 'pierre' and player_choice != 'papier' and player_choice != 'ciseaux': 
+                    if player_choice not in items_game: 
                         player_choiceok = False
-
+    # choice of the machine
     if input_init == 'O': 
        machine_choice= ['papier','pierre','ciseaux'][random.randint(0, 2)]
 
+    # choice of the second player
     if input_init == 'N':
         print("Joueur", player2)
         player2_choice= input("faîtes votre choix parmi (pierre, papier, ciseaux): ").lower()
-        if machine_choice!= 'pierre':
-            if machine_choice!= 'papier':
-                if machine_choice!= 'ciseaux':
-                    j2bon = False
+        
+        # loop to check if player2 choice is correct
+        if player2_choice not in items_game:
+                    player2_choiceok = False
                     print("Je n'ai pas compris votre réponse")
-                    while not j2bon :
+                    while not player2_choiceok :
                         print("Joueur ", player2)
                         machine_choice= input(" faîtes votre choix parmi (pierre, papier, ciseaux): ")
-                        j2bon = True
-                        if machine_choice!= 'pierre': 
-                            if machine_choice!= 'papier':
-                                if machine_choice!= 'ciseaux':
-                                    j2bon = False
+                        player2_choiceok = True
+                        if player_choice not in items_game: 
+                            player2_choiceok = False
+                                    
 
     #On affiche les choix de chacun
     print("Si on récapitule :",player, player_choice, "et", player2, machine_choice,"\n")

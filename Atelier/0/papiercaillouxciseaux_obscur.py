@@ -47,7 +47,7 @@ while gameActive== True:
                         player_choiceok = False
     # choice of the machine
     if input_init == 'O': 
-       machine_choice= ['papier','pierre','ciseaux'][random.randint(0, 2)]
+       player2_choice = ['papier','pierre','ciseaux'][random.randint(0, 2)]
 
     # choice of the second player
     if input_init == 'N':
@@ -60,93 +60,55 @@ while gameActive== True:
                     print("Je n'ai pas compris votre réponse")
                     while not player2_choiceok :
                         print("Joueur ", player2)
-                        machine_choice= input(" faîtes votre choix parmi (pierre, papier, ciseaux): ")
+                        player2_choice= input(" faîtes votre choix parmi (pierre, papier, ciseaux): ")
                         player2_choiceok = True
-                        if player_choice not in items_game: 
+                        if player2_choice not in items_game: 
                             player2_choiceok = False
                                     
 
-    #On affiche les choix de chacun
-    print("Si on récapitule :",player, player_choice, "et", player2, machine_choice,"\n")
+    # show choices
+    print("Si on récapitule :",player, player_choice, "et", player2, player_choice,"\n")
 
 
-    #On regarde qui a gagné cette manche on calcule les points et on affiche le résultat
-    if player_choice == 'papier' and machine_choice== 'papier' :
-        winner = "aucun de vous, vous être exequo"
-        score_player1= score_player1+ 0
-        score_player2 = score_player2 + 0
-        print("le gagnant est",winner)
-        print("Les scores à l'issue de cette manche sont donc",player, score_player1, "et", player2, score_player2, "\n")
-
-    if player_choice == 'pierre' and machine_choice== 'papier' :
-        winner = player2
-        score_player1= score_player1+ 0
-        score_player2 = score_player2 + 1
-        print("le gagnant est",winner)
-        print("Les scores à l'issue de cette manche sont donc",player, score_player1, "et", player2, score_player2, "\n")
-
-    if player_choice == 'pierre' and machine_choice== 'pierre' :
-        winner = "aucun de vous, vous être ex æquo"
-        score_player1= score_player1+ 0
-        score_player2 = score_player2 + 0
-        print("le gagnant est",winner)
-        print("Les scores à l'issue de cette manche sont donc",player, score_player1, "et", player2, score_player2, "\n")
-
-    if player_choice == 'pierre' and machine_choice== 'ciseaux' :
-        winner = player
-        score_player1= score_player1+ 1
-        score_player2 = score_player2 + 0
-        print("le gagnant est",winner)
-        print("Les scores à l'issue de cette manche sont donc",player, score_player1, "et", player2, score_player2, "\n")
-
-    if player_choice == 'papier' and machine_choice== 'ciseaux' :
-        winner = player2
-        score_player1= score_player1+ 0
-        score_player2 = score_player2 + 1
-        print("le gagnant est",winner)
-        print("Les scores à l'issue de cette manche sont donc",player, score_player1, "et", player2, score_player2, "\n")
-
-    if player_choice == 'papier' and machine_choice== 'pierre' :
-        winner = player
-        score_player1= score_player1+ 1
-        score_player2 = score_player2 + 0
-        print("le gagnant est",winner)
-        print("Les scores à l'issue de cette manche sont donc",player, score_player1, "et", player2, score_player2, "\n")
-
-    if player_choice == 'ciseaux' and machine_choice== 'pierre' :
-        winner = player2
-        score_player1= score_player1+ 0
-        score_player2 = score_player2 + 1
-        print("le gagnant est",winner)
-        print("Les scores à l'issue de cette manche sont donc",player, score_player1, "et", player2, score_player2, "\n")
-
-    if player_choice == 'ciseaux' and machine_choice== 'ciseaux' :
-        winner = "aucun de vous, vous être ex æquo"
-        score_player1= score_player1+ 0
-        score_player2 = score_player2 + 0
-        print("le gagnant est",winner)
-        print("Les scores à l'issue de cette manche sont donc",player, score_player1, "et", player2, score_player2, "\n")
-
-    if player_choice == 'ciseaux' and machine_choice== 'papier' :
-        winner = player
-        score_player1= score_player1+ 1
-        score_player2 = score_player2 + 0
-        print("le gagnant est",winner)
-        print("Les scores à l'issue de cette manche sont donc",player, score_player1, "et", player2, score_player2, "\n")
-
-    if round_count==1 or round_count==2 or round_count==3 or round_count==4:
-        gameActive= True
+    # dict to check who win
+    gagnants = {
+    ('pierre', 'pierre'): "aucun de vous, vous êtes exequo",
+    ('pierre', 'ciseaux'): player,
+    ('pierre', 'papier'): player2,
+    ('papier', 'pierre'): player,
+    ('papier', 'ciseaux'): player2,
+    ('papier', 'papier'): "aucun de vous, vous êtes exequo",
+    ('ciseaux', 'pierre'): player2,
+    ('ciseaux', 'ciseaux'): "aucun de vous, vous êtes exequo",
+    ('ciseaux', 'papier'): player
+}
+    
+    # determine the winner using the dict
+    winner = gagnants[(player_choice, player2_choice)]
+    
+    print(f"{winner} a gagné cette manche ! \n")
+    
+    # determine the score
+    if winner == player:
+        score_player1 += 1
+    elif winner == player2:
+        score_player2 += 1
+        
+    print(f"Le score est de {score_player1} pour {player} et {score_player2} pour {player2} \n")    
+   
+    # STOP GAME 
     if round_count==5:
         gameActive= False
         
-    if round_count==1 or round_count==2 or round_count==3 or round_count==4:
-        #On propose de gameActiveou de s'arrêter 
-        go = input("Souhaitez vous refaire une partie {} contre {} ? (O/N) ".format(player,player2))
-        if go == 'O':
+    # RESTART ROUND
+    if round_count<5:
+        input_init = input("Souhaitez vous refaire une partie {} contre {} ? (O/N) ".format(player,player2)).upper()
+        # loop to check if player choice is correct
+        if input_init == 'O':
             gameActive= True
-        if go == 'N':
+        if input_init == 'N':
             gameActive= False
-        if go != 'O' and go != 'N':
+        if input_init != 'O' and input_init != 'N':
             gameActive= True
             print("Vous ne répondez pas à la question, on continue ")
         

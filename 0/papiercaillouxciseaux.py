@@ -1,4 +1,4 @@
-import random
+from random import randint 
 
 # init variables
 input_init = input("Voulez-vous jouer contre l'ordinateur (Max 5 parties) O/N ? " ).upper()
@@ -9,7 +9,7 @@ score_player2 = 0
 round_count= 0
 gameActive = False
 
-items_game = ['pierre', 'papier', 'ciseaux']
+items_game = ['pierre', 'papier', 'ciseaux', 'puit']
 
 # init players
 if input_init != 'O' and input_init != 'N' :
@@ -42,12 +42,11 @@ while gameActive== True:
                 while player_choiceok == False :
                     print("Joueur ", player)
                     player_choice = input(" faîtes votre choix parmi (pierre, papier, ciseaux): ").lower()
-                    player_choiceok = True
-                    if player_choice not in items_game: 
-                        player_choiceok = False
+                    if player_choice in items_game: 
+                        player_choiceok = True
     # choice of the machine
     if input_init == 'O': 
-       player2_choice = ['papier','pierre','ciseaux'][random.randint(0, 2)]
+       player2_choice = ['papier','pierre','ciseaux'][randint(0, 2)]
 
     # choice of the second player
     if input_init == 'N':
@@ -58,17 +57,15 @@ while gameActive== True:
         if player2_choice not in items_game:
                     player2_choiceok = False
                     print("Je n'ai pas compris votre réponse")
-                    while not player2_choiceok :
+                    while player2_choiceok == False:
                         print("Joueur ", player2)
                         player2_choice= input(" faîtes votre choix parmi (pierre, papier, ciseaux): ")
-                        player2_choiceok = True
-                        if player2_choice not in items_game: 
-                            player2_choiceok = False
+                        if player2_choice in items_game: 
+                            player2_choiceok = True
                                     
 
     # show choices
     print("Si on récapitule :",player, player_choice, "et", player2, player_choice,"\n")
-
 
     # dict to check who win
     gagnants = {
@@ -80,7 +77,13 @@ while gameActive== True:
     ('papier', 'papier'): "aucun de vous, vous êtes exequo",
     ('ciseaux', 'pierre'): player2,
     ('ciseaux', 'ciseaux'): "aucun de vous, vous êtes exequo",
-    ('ciseaux', 'papier'): player
+    ('ciseaux', 'papier'): player,
+    ('puit', 'pierre'): player,
+    ('pierre', 'puit'): player2,
+    ('puit', 'ciseaux'): player,
+    ('ciseaux', 'puit'): player2,
+    ('puit', 'papier'): player2,
+    ('papier', 'puit'): player,
 }
     
     # determine the winner using the dict
@@ -91,7 +94,7 @@ while gameActive== True:
     # determine the score
     if winner == player:
         score_player1 += 1
-    elif winner == player2:
+    else:
         score_player2 += 1
         
     print(f"Le score est de {score_player1} pour {player} et {score_player2} pour {player2} \n")    

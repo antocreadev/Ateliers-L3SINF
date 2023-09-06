@@ -32,7 +32,7 @@ while gameActive== True:
     
     round_count+= 1 
     
-    player_choice = input(f"{player} faîtes votre choix parmi (pierre, papier, ciseaux): ").lower()
+    player_choice = input(f"{player} faîtes votre choix parmi (pierre, papier, ciseaux, puit): ").lower()
     
     # loop to check if player choice is correct
     if player_choice not in items_game:
@@ -41,7 +41,7 @@ while gameActive== True:
                 
                 while player_choiceok == False :
                     print("Joueur ", player)
-                    player_choice = input(" faîtes votre choix parmi (pierre, papier, ciseaux): ").lower()
+                    player_choice = input(" faîtes votre choix parmi (pierre, papier, ciseaux, puit): ").lower()
                     if player_choice in items_game: 
                         player_choiceok = True
     # choice of the machine
@@ -51,7 +51,7 @@ while gameActive== True:
     # choice of the second player
     if input_init == 'N':
         print("Joueur", player2)
-        player2_choice= input("faîtes votre choix parmi (pierre, papier, ciseaux): ").lower()
+        player2_choice= input("faîtes votre choix parmi (pierre, papier, ciseaux, puit): ").lower()
         
         # loop to check if player2 choice is correct
         if player2_choice not in items_game:
@@ -59,7 +59,7 @@ while gameActive== True:
                     print("Je n'ai pas compris votre réponse")
                     while player2_choiceok == False:
                         print("Joueur ", player2)
-                        player2_choice= input(" faîtes votre choix parmi (pierre, papier, ciseaux): ")
+                        player2_choice= input(" faîtes votre choix parmi (pierre, papier, ciseaux, puit): ")
                         if player2_choice in items_game: 
                             player2_choiceok = True
                                     
@@ -84,17 +84,19 @@ while gameActive== True:
     ('ciseaux', 'puit'): player2,
     ('puit', 'papier'): player2,
     ('papier', 'puit'): player,
+    ('puit', 'puit'): "aucun de vous, vous êtes exequo"
 }
     
     # determine the winner using the dict
     winner = gagnants[(player_choice, player2_choice)]
     
+    print(" -> ", player_choice, player2_choice)
     print(f"{winner} a gagné cette manche ! \n")
     
     # determine the score
     if winner == player:
         score_player1 += 1
-    else:
+    elif winner == player2:
         score_player2 += 1
         
     print(f"Le score est de {score_player1} pour {player} et {score_player2} pour {player2} \n")    

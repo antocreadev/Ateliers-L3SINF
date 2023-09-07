@@ -25,7 +25,6 @@ def message_imc(imc : float) -> str :
     """
     message = IMC[0][1]
     counter = 0
-    print(IMC[1][0] , IMC[1+1][0])
     while imc >= IMC[counter][0] :
         message = IMC[counter][1]
         counter += 1

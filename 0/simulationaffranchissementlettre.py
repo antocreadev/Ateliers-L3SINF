@@ -27,7 +27,7 @@ def affranchissement_lettre(type : str , poid : int) -> float :
         
         # if poid is in the range of the current weight
         if poid <= TYPES_LETTERS[type][i][0]:
-            return TYPES_LETTERS[type][i][1]
+            return f"{TYPES_LETTERS[type][i][1]}€"
 
 
 # EXECUTION

@@ -47,7 +47,8 @@ def racine_double(a : float,b : float,delta : float ,num : int) :
     Returns:
         _type_: racine double
     """
-
+    if a == 0 : 
+        return "a ne doit pas être égale à 0"
     if num == 1 : 
         return (-b + delta**0.5) / 2*a
     if num == 2 : 

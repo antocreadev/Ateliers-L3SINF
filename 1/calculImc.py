@@ -1,29 +1,18 @@
 # --- IMPORT ---
 from random import uniform
+from math import inf
 
-# --- UTILS --- :
-    # On peut parcourir un dictionnaire avec les méthodes suivantes (on ne peut pas parcourir un dictionnaire avec une boucle for classique car un dict n'est pas une sséquence et n'est pas indexé)
-    # keys() : parcourt les clés.
-    # values() : parcourt les valeurs.
-    # items() : parcourt les couples clé-valeur
-    
-    # uniform fonctionne comme randint mais avec des float
-    
-    # (min, max) -> destructuring dans la boucle sont des variables temporaires à la boucle
-    
-    
 # --- CONST ---
-# structure : { "interprétation" : (min, max), ..."}
-IMC = {
-    (0, 16.5) : "dénutrition ou famine",
-    (16.5, 18.5) : "maigreur", 
-    (18.5, 25) : "corpulence normale", 
-    (25, 30) : "surpoids", 
-    (30, 35) : "obésité modérée",
-    (35, 40) : "obésité sévère", 
-    (40, 999) : "obésité morbide"
-}
-
+# structure : [tuple (imc , message)]
+IMC = [
+    (16.5,  "dénutrition ou famine"),
+    (18.5 , "maigreur" ),
+    (25 , "corpulence normale"),
+    (30 , "surpoids"),
+    (35 , "obésité modérée"),
+    (40 , "obésité sévère" ),
+    (inf , "obésité morbide")
+]
 # --- Functions ---
 def message_imc(imc : float) -> str :
     """ function that returns a message according to the imc
@@ -34,12 +23,12 @@ def message_imc(imc : float) -> str :
     Returns:
         str: iterpretation of the imc
     """
-    message = None
-    if(imc < 0 or imc > 999) : 
-        return "imc doit être compris entre 0 et 120"
-    for (min, max), interpretation,  in IMC.items() :
-        if imc >= min and imc < max :
-            message = interpretation
+    message = IMC[0][1]
+    counter = 0
+    print(IMC[1][0] , IMC[1+1][0])
+    while imc >= IMC[counter][0] :
+        message = IMC[counter][1]
+        counter += 1
     return message
 
 def test_message_imc(x : int ) -> str:

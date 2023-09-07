@@ -1,10 +1,12 @@
 # CONST 
-TEST_DATA = {
+TEST_DATA = [
     (1, -5, 6), 
     (1, -5, 4),
     (1, 2, 5),
     (0, 2, 1)
-}
+]
+
+# dict -> indexé en fonction d'une table de hashage
 def discriminant(a: float,b : float ,c : float ) -> float : 
     """ Calcul du discriminant d'une équation du second degré (ax²+bx+c =0 avec a,b,c réels et a≠0)
 
@@ -94,13 +96,13 @@ def equation(a : float,b : float,c: float) -> str:
         str: équation du second degré (ax²+bx+c =0 avec a,b,c réels et a≠0) et sa solution
     """
 
-    print((solution_equation(a,b,c)))
+    print(f"{solution_equation(a,b,c)} \n")
     
-def test(test_dict : dict ) -> str : 
-    """ Teste la fonction equation (ax²+bx+c =0 avec a,b,c réels et a≠0)
+def test(test_dict : list ) -> str : 
+    """ Teste la fonction equation()
 
     Args:
-        test_dict (dict): dictionnaire de test
+        test_dict (list): liste de test
 
     Returns:
         str: test de la fonction equation

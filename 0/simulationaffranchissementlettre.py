@@ -26,13 +26,21 @@ def affranchissement_lettre(type : str , poids : int) -> float :
 
 
 # EXECUTION
+try : 
+    input_poids = int(input("Quel est le poids de votre lettre ? : "))
+except ValueError:
+    print("Vous n'avez pas choisi un poids correct")
+    exit()
+    
 input_type = input("Quel est le type de votre lettre ? (verte, prioritaire, ecopli) : ").upper().strip()
 # loop to check if input_poids is correct
-while input_type not in TYPES_LETTERS:
+while input_type not in TYPES_LETTERS and input_poids != int:
     print("Vous n'avez pas choisi un type de lettre, on continue ")
     input_type = input("Quel est le type de votre lettre ? (verte, prioritaire, ecopli) : ").upper().strip()
-input_poids = int(input("Quel est le poids de votre lettre ? : "))
+
+
     
 print(affranchissement_lettre(input_type, input_poids))
+
     
     

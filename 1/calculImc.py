@@ -35,6 +35,8 @@ def message_imc(imc : float) -> str :
         str: iterpretation of the imc
     """
     message = None
+    if(imc < 0 or imc > 999) : 
+        return "imc doit être compris entre 0 et 120"
     for (min, max), interpretation,  in IMC.items() :
         if imc >= min and imc < max :
             message = interpretation

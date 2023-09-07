@@ -28,13 +28,13 @@ une année et renvoie un booléen indiquant si l'année considérée est bissext
         return False 
 
 def test_est_bissextile(x : int ) -> str:
-    """_summary_
+    """Fonction de test pour la fonction est_bissextile()
 
     Args:
-        x (int): _description_
+        x (int): nombre de test aléatoire
 
     Returns:
-        str: _description_
+        str: retour du test
     """
     
     print("test aléatoire")

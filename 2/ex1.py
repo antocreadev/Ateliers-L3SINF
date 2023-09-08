@@ -1,3 +1,4 @@
+# J'ai créer plusieurs versions de fonction pour la même question lorsque je me rend compte que la méthode adopté n'est pas la bonne (quand je complique les choses ou quand je ne respecte pas des conventions etc.)
 # CONST 
 # la liste doit être trié du plus petit au plus grand 
 TEST_LISTE = [1,23,35,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]

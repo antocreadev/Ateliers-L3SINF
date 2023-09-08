@@ -1,17 +1,23 @@
 # J'ai créer plusieurs versions de fonction pour la même question lorsque je me rend compte que la méthode adopté n'est pas la bonne (quand je complique les choses, quand je ne respecte pas des conventions etc.)
 # CONST 
-# la liste doit être trié du plus petit au plus grand 
 TEST_LISTE = [1,23,35,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
 
 # FINCTIONS
 def somme_v1(L : list) -> float : 
-    """_summary_
+    """
+    Calcule la somme des éléments d'une liste.
 
     Args:
-        L (list): _description_
+        L (list): La liste contenant les éléments à additionner.
 
     Returns:
-        float: _description_
+        float: La somme des éléments de la liste.
+
+    Examples:
+        >>> somme_v1([1, 2, 3, 4, 5])
+        15.0
+        >>> somme_v1([0.5, 1.5, 2.5])
+        4.5
     """
     result = 0
     for k in range(len(L)) : 
@@ -19,13 +25,20 @@ def somme_v1(L : list) -> float :
     return result
 
 def somme_v2(L : list) -> float : 
-    """_summary_
+    """
+    Calcule la somme des éléments d'une liste.
 
     Args:
-        L (list): _description_
+        L (list): La liste contenant les éléments à additionner.
 
     Returns:
-        float: _description_
+        float: La somme des éléments de la liste.
+
+    Examples:
+        >>> somme_v2([1, 2, 3, 4, 5])
+        15.0
+        >>> somme_v2([0.5, 1.5, 2.5])
+        4.5
     """
     result = 0
     for e in L :
@@ -33,13 +46,20 @@ def somme_v2(L : list) -> float :
     return result
 
 def somme_v3(L : list) -> float : 
-    """_summary_
+    """
+    Calcule la somme des éléments d'une liste.
 
     Args:
-        L (list): _description_
+        L (list): La liste contenant les éléments à additionner.
 
     Returns:
-        float: _description_
+        float: La somme des éléments de la liste.
+
+    Examples:
+        >>> somme_v3([1, 2, 3, 4, 5])
+        15.0
+        >>> somme_v3([0.5, 1.5, 2.5])
+        4.5
     """
     result = 0
     counter = 0
@@ -52,27 +72,41 @@ def somme_v3(L : list) -> float :
 # la version la plus adapté est la version avec la boucle for car on connait le nombre d'iteration
 
 def  moyenne(L : list) -> float : 
-    """_summary_
+    """
+    Calcule la moyenne des éléments d'une liste.
 
     Args:
-        L (list): _description_
+        L (list): La liste contenant les éléments pour calculer la moyenne.
 
     Returns:
-        float: _description_
+        float: La moyenne des éléments de la liste, ou un message d'erreur si la liste est vide.
+
+    Examples:
+        >>> moyenne([1, 2, 3, 4, 5])
+        3.0
+        >>> moyenne([])
+        "La liste est vide, impossible de calculer la moyenne."
     """
     if (len(L) == 0) : 
         return "pas de division par 0"
     return somme_v1(L) / len(L)
 
 def nb_sup_v1 (L : list,e : int) ->  int: 
-    """_summary_
+    """
+    Compte le nombre d'éléments supérieurs à une valeur donnée dans une liste.
 
     Args:
-        L (list): _description_
-        e (int): _description_
+        L (list): La liste contenant les éléments à comparer.
+        e (int): La valeur de référence pour la comparaison.
 
     Returns:
-        int: _description_
+        int: Le nombre d'éléments dans la liste qui sont supérieurs à la valeur de référence.
+
+    Examples:
+        >>> nb_sup_v1([1, 2, 3, 4, 5], 3)
+        2
+        >>> nb_sup_v1([0.5, 1.5, 2.5], 2)
+        1
     """
     result = 0 
     for k in range(len(L)) :
@@ -82,13 +116,20 @@ def nb_sup_v1 (L : list,e : int) ->  int:
 
 def nb_sup_v2 (L : list,e : float) -> int : 
     """
+    Compte le nombre d'éléments supérieurs à une valeur donnée dans une liste.
 
     Args:
-        L (list): _description_
-        e (float): _description_
+        L (list): La liste contenant les éléments à comparer.
+        e (float): La valeur de référence pour la comparaison.
 
     Returns:
-        int: _description_
+        int: Le nombre d'éléments dans la liste qui sont supérieurs à la valeur de référence.
+
+    Examples:
+        >>> nb_sup_v2([1.5, 2.5, 3.5, 4.5, 5.5], 3.0)
+        2
+        >>> nb_sup_v2([0.5, 1.5, 2.5], 2.0)
+        1
     """
     result = 0 
     for l in L :
@@ -98,6 +139,23 @@ def nb_sup_v2 (L : list,e : float) -> int :
 
 
 def moy_sup (L : list,e : float) -> float :
+    """
+    Calcule la moyenne des éléments supérieurs à une valeur donnée dans une liste.
+
+    Args:
+        L (list): La liste contenant les éléments à comparer.
+        e (float): La valeur de référence pour la comparaison.
+
+    Returns:
+        float: La moyenne des éléments de la liste qui sont supérieurs à la valeur de référence, 
+                ou 0.0 si aucun élément ne satisfait la condition.
+
+    Examples:
+        >>> moy_sup([1.5, 2.5, 3.5, 4.5, 5.5], 3.0)
+        4.5
+        >>> moy_sup([0.5, 1.5, 2.5], 2.0)
+        0.0
+    """
     liste_nombre_sup = []
     for k in range(len(L)) :
         # print(L[k], e)
@@ -106,6 +164,23 @@ def moy_sup (L : list,e : float) -> float :
     return moyenne(liste_nombre_sup)
 
 def moy_sup_v2 (L : list,e : float) -> float :
+    """
+    Calcule la moyenne des éléments supérieurs à une valeur donnée dans une liste.
+
+    Args:
+        L (list): La liste contenant les éléments à comparer.
+        e (float): La valeur de référence pour la comparaison.
+
+    Returns:
+        float: La moyenne des éléments de la liste qui sont supérieurs à la valeur de référence, 
+                ou un message d'erreur si aucun élément ne satisfait la condition.
+
+    Examples:
+        >>> moy_sup_v2([1.5, 2.5, 3.5, 4.5, 5.5], 3.0)
+        4.5
+        >>> moy_sup_v2([0.5, 1.5, 2.5], 2.0)
+        "Aucun élément ne satisfait la condition."
+    """
     nombre_sup = nb_sup_v1(L, e)
     counter = 0
     for k in range(len(L)) :
@@ -116,6 +191,21 @@ def moy_sup_v2 (L : list,e : float) -> float :
     return counter / nombre_sup
 
 def val_max(L : list ) -> float  : 
+    """
+    Trouve la valeur maximale dans une liste.
+
+    Args:
+        L (list): La liste contenant les éléments à comparer.
+
+    Returns:
+        float: La valeur maximale de la liste, ou 0.0 si la liste est vide.
+
+    Examples:
+        >>> val_max([1.5, 2.5, 3.5, 4.5, 5.5])
+        5.5
+        >>> val_max([])
+        0.0
+    """
     value_max = 0
     for k in range(len(L)) :
         # print(L[k], e)
@@ -124,6 +214,22 @@ def val_max(L : list ) -> float  :
     return value_max
 
 def ind_max(L : list ) -> int : 
+    """
+    Trouve l'indice de la première occurrence de la valeur maximale dans une liste.
+
+    Args:
+        L (list): La liste contenant les éléments à comparer.
+
+    Returns:
+        int: L'indice de la première occurrence de la valeur maximale dans la liste, 
+                ou -1 si la liste est vide.
+
+    Examples:
+        >>> ind_max([1.5, 2.5, 3.5, 4.5, 5.5])
+        4
+        >>> ind_max([])
+        -1
+    """
     value_indice = 0 
     value_max = val_max(L)
     # print(f"max : {value_max} ")

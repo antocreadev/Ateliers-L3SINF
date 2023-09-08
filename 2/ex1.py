@@ -1,6 +1,8 @@
+# CONST 
 # la liste doit être trié du plus petit au plus grand 
 TEST_LISTE = [1,23,35,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
 
+# FINCTIONS
 def somme_v1(L : list) -> float : 
     """_summary_
 
@@ -58,28 +60,27 @@ def  moyenne(L : list) -> float :
         float: _description_
     """
     if (len(L) == 0) : 
-        return " pas de division par 0"
+        return "pas de division par 0"
     return somme_v1(L) / len(L)
 
-def nb_sup_v1 (L : list,e : float) -> float : 
+def nb_sup_v1 (L : list,e : int) ->  int: 
     """_summary_
 
     Args:
         L (list): _description_
-        e (float): _description_
+        e (int): _description_
 
     Returns:
-        float: _description_
+        int: _description_
     """
     result = 0 
     for k in range(len(L)) :
-        # print(L[k], e)
         if e < L[k] : 
             result += 1 
     return result
 
 def nb_sup_v2 (L : list,e : float) -> int : 
-    """retourne la moyenne des valeurs de la liste strictement supérieures à e.
+    """
 
     Args:
         L (list): _description_
@@ -90,7 +91,6 @@ def nb_sup_v2 (L : list,e : float) -> int :
     """
     result = 0 
     for l in L :
-        # print(L[k], e)
         if e < l : 
             result += 1 
     return result
@@ -103,6 +103,16 @@ def moy_sup (L : list,e : float) -> float :
         if e < L[k] : 
             liste_nombre_sup.append(L[k]) 
     return moyenne(liste_nombre_sup)
+
+def moy_sup_v2 (L : list,e : float) -> float :
+    nombre_sup = nb_sup_v1(L, e)
+    counter = 0
+    for k in range(len(L)) :
+        if L[k] > e : 
+            counter += L[k]
+    if counter == 0 : 
+        return "pas de division par 0"
+    return counter / nombre_sup
 
 def val_max(L : list ) -> float  : 
     value_max = 0
@@ -174,6 +184,13 @@ def test_exercice1 ():
     #test somme 11111 
     lst2test1=[1,10,100, 1000,10000] 
     print("Test somme 1111 : ", moy_sup(lst2test1,5), "\n")
+    
+    print("TEST moy_sup_v2") 
+    #test liste vide 
+    print("Test liste vide : ", moy_sup_v2([],5)) 
+    #test somme 11111 
+    lst2test1=[1,10,100, 1000,10000] 
+    print("Test somme 1111 : ", moy_sup_v2(lst2test1,5), "\n")
     
     print("TEST val_max") 
     #test liste vide 

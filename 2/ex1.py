@@ -57,6 +57,8 @@ def  moyenne(L : list) -> float :
     Returns:
         float: _description_
     """
+    if (len(L) == 0) : 
+        return " pas de division par 0"
     return somme_v1(L) / len(L)
 
 def nb_sup_v1 (L : list,e : float) -> float : 
@@ -115,7 +117,7 @@ def ind_max(L : list ) -> int :
     value_max = val_max(L)
     # print(f"max : {value_max} ")
     for k in range(len(L)) : 
-        print(f"indice : {k}, value : {L[k]}")
+        # print(f"indice : {k}, value : {L[k]}")
         if L[k] == value_max : 
             value_indice = k 
     return value_indice
@@ -137,13 +139,56 @@ def test_exercice1 ():
     lst2test1=[1,10,100, 1000,10000] 
     print("Test somme 1111 : ", somme_v2(lst2test1), "\n")
     
-    
     print("TEST SOMME V3") 
     #test liste vide 
     print("Test liste vide : ", somme_v3([])) 
     #test somme 11111 
     lst2test1=[1,10,100, 1000,10000] 
     print("Test somme 1111 : ", somme_v3(lst2test1), "\n")
+    
+    
+    print("TEST moyenne") 
+    #test liste vide 
+    print("Test liste vide : ", moyenne([])) 
+    #test somme 11111 
+    lst2test1=[1,10,100, 1000,10000] 
+    print("Test somme 1111 : ", moyenne(lst2test1), "\n")
+    
+    print("TEST nb_sup_v1") 
+    #test liste vide 
+    print("Test liste vide : ", nb_sup_v1([],5)) 
+    #test somme 11111 
+    lst2test1=[1,10,100, 1000,10000] 
+    print("Test somme 1111 : ", nb_sup_v1(lst2test1,5), "\n")
+    
+    print("TEST nb_sup_v2") 
+    #test liste vide 
+    print("Test liste vide : ", nb_sup_v2([],5)) 
+    #test somme 11111 
+    lst2test1=[1,10,100, 1000,10000] 
+    print("Test somme 1111 : ", nb_sup_v2(lst2test1,5), "\n")
+    
+    print("TEST moy_sup") 
+    #test liste vide 
+    print("Test liste vide : ", moy_sup([],5)) 
+    #test somme 11111 
+    lst2test1=[1,10,100, 1000,10000] 
+    print("Test somme 1111 : ", moy_sup(lst2test1,5), "\n")
+    
+    print("TEST val_max") 
+    #test liste vide 
+    print("Test liste vide : ", val_max([])) 
+    #test somme 11111 
+    lst2test1=[1,10,100, 1000,10000] 
+    print("Test somme 1111 : ", val_max(lst2test1), "\n")
 
-# test_exercice1()
+    print("TEST ind_max") 
+    #test liste vide 
+    print("Test liste vide : ", ind_max([])) 
+    #test somme 11111 
+    lst2test1=[1,10,100, 1000,10000] 
+    print("Test somme 1111 : ", ind_max(lst2test1), "\n")
+
+
+test_exercice1()
 

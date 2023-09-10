@@ -5,8 +5,7 @@
 
 # CONST 
 TEST_LISTE = [1,23, 23, 35,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-TEST_LISTE2 = [1,2,3]
-
+TEST_LISTE2 = [1, 2, 8, 12, 34, 44, 55, 101]
 def position_v1(lst : list ,elt : int) -> int :
     """
     Trouve la position de la dernière occurrence d'un élément dans une liste.
@@ -201,4 +200,123 @@ def est_triee_with_while(lst) -> bool :
     else : 
         return False
 
-# la version avec la boucle for est plus visible et a moins de variable 
+# la version avec la boucle for est plus visible et a moins de variable
+
+# Fonction qui n'est pas demander dans l'Atelier (recherche dichotomique(binaire) -> renvoie l'index de l'élément trouvé sinon -1
+def recherche_dichotomique(lst : list,e : int, compteur : int=0 ) -> int:
+    """
+    Effectue une recherche dichotomique récursive d'un élément dans une liste triée.
+
+    Args:
+        lst (list): La liste triée dans laquelle effectuer la recherche.
+        e (int): L'élément à rechercher dans la liste.
+        compteur (int, optional): Un compteur utilisé pour suivre l'index dans la liste d'origine (par défaut 0).
+
+    Returns:
+        int: L'indice de l'élément recherché dans la liste d'origine, -1 s'il n'est pas trouvé.
+
+    Note:
+        La fonction recherche un élément dans une liste triée en divisant la liste en deux à chaque
+        étape, puis en comparant l'élément avec l'élément central. Si l'élément est trouvé, la fonction
+        renvoie son indice dans la liste d'origine. Sinon, elle continue la recherche dans la moitié
+        appropriée de la liste jusqu'à ce que l'élément soit trouvé ou que la liste soit épuisée.
+
+    Exemple:
+        >>> lst = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        >>> recherche_dichotomique(lst, 5)
+        4
+        >>> recherche_dichotomique(lst, 10)
+        -1
+    """
+    # si la liste est vide
+    if not lst:
+        return -1
+    m = len(lst)//2
+    mid_element = lst[m]
+    
+    # si l'élément est celui du milieu 
+    if e == mid_element:
+        return m + compteur
+    # si le dernier élément ne correspond pas
+    if len(lst) == 1:
+        return -1
+    
+    # si l'élément recherché est plus petit que l'élément du milieu donc l'élément est à gauche
+    if e < mid_element:
+        return recherche_dichotomique(lst[:m], e, compteur)
+    # si l'élément recherché est plus grand que l'élément du milieu donc l'élément est à droite
+    if e > mid_element:
+        return recherche_dichotomique(lst[m:], e , compteur + m)
+
+
+def position_tri_exo2_q4(lst : list,e :int) -> int : 
+    """
+    Recherche la position de l'élément 'e' dans la liste triée 'lst'.
+
+    Args:
+    lst (list): Une liste triée de manière ascendante.
+    e (int): L'élément que l'on souhaite trouver dans la liste.
+
+    Returns:
+    int: La position de 'e' dans la liste 'lst'. Si 'e' n'est pas présent, renvoie -1.
+
+    Note:
+    La fonction utilise une recherche binaire pour optimiser la recherche dans la liste triée.
+    Elle commence par comparer 'e' à l'élément médian de la liste, puis réduit la plage de recherche
+    de manière itérative jusqu'à ce que l'élément soit trouvé ou que la plage de recherche devienne vide.
+
+    Exemple:
+    >>> lst = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    >>> position_tri_exo2_q4(lst, 5)
+    4  # '5' est à la position 4 dans la liste 'lst'
+    
+    >>> position_tri_exo2_q4(lst, 10)
+    -1  # '10' n'est pas dans la liste 'lst', donc renvoie -1.
+    """
+    compteur = 0
+    while e != lst[len(lst)//2]: 
+        taille_lst = len(lst)
+        m = taille_lst//2
+        mid_element = lst[m]
+        if taille_lst == 1 : 
+            return -1
+        if e < mid_element : 
+            lst =lst[:m]
+        if e > mid_element: 
+            lst = lst[m:]
+            compteur += m
+    return compteur + m//2
+
+
+def a_repetitions(lst : list) -> bool :
+    """
+    Vérifie s'il y a des éléments répétés dans la liste 'lst'.
+
+    Args:
+    lst (list): Une liste d'éléments à vérifier.
+
+    Returns:
+    bool: True si la liste contient au moins un élément répété, False sinon.
+
+    Note:
+    La fonction parcourt la liste 'lst' en maintenant une liste auxiliaire 'T' pour suivre
+    les éléments déjà rencontrés. Si un élément est rencontré pour la deuxième fois,
+    la fonction renvoie True, indiquant la présence d'éléments répétés. Sinon, elle parcourt
+    toute la liste et renvoie False si aucun élément n'est répété.
+
+    Exemple:
+    >>> a_repetitions([1, 2, 3, 4, 5])
+    False  # Aucun élément n'est répété.
+
+    >>> a_repetitions([1, 2, 3, 2, 4, 5])
+    True  # L'élément '2' est répété dans la liste.
+    """
+    T = []
+    counter = 0 
+    while counter < len(lst) :
+        if lst[counter] not in  T : 
+            T.append(lst[counter])
+        else : 
+            return True
+        counter += 1
+    return False

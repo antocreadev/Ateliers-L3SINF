@@ -13,13 +13,10 @@ def histo(F: list) -> list:
     Returns:
         list: Une liste représentant l'histogramme des valeurs de F.
     """
-    minimum = 0
     maximum = 0
     for k in range(len(F)):
         if F[k] > maximum:
             maximum = F[k]
-        if F[k] < minimum:
-            minimum = F[k]
     H = [0] * (maximum + 1)
 
     for f in range(len(F)):

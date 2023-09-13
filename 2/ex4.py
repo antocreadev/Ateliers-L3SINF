@@ -152,5 +152,5 @@ def test():
     hist(TEST_LISTE)
     hist(TEST_LISTE2)
 
-test()
+# test()
 

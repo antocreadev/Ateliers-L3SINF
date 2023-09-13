@@ -1,32 +1,22 @@
 def mots_Nlettres(lst_mot: list, n:int) -> list: 
-    liste_longueur = []
-    accumulateur = 0 
-    result = []
-    
-    for mot in range(len(lst_mot)) : 
-        for l in range(len(lst_mot[mot])) : 
-            accumulateur += 1
-        liste_longueur.append(accumulateur)
-        accumulateur = 0
-    print(liste_longueur)
-    
-    for k in range(len(lst_mot)) : 
-        print(f"{lst_mot[k]} ---> taille : {liste_longueur[k]}")
-        if liste_longueur[k] <= n : 
-            result.append(lst_mot[k])
-    return result
-            
-def mots_Nlettres_comprehnsion_list(lst_mot: list, n:int) -> list: 
     return [mot for mot in lst_mot if len(mot)<=n]
-            
-print(mots_Nlettres(["jouer","bonjour", "punir", "jour", "aurevoir", "revoir", "pouvoir", "cour", "abajour", 
-"finir", "aimer"], 5))
 
-print(mots_Nlettres_comprehnsion_list(["jouer","bonjour", "punir", "jour", "aurevoir", "revoir", "pouvoir", "cour", "abajour", 
-"finir", "aimer"], 5))
-
-
-def commence_par(mot, prefixe) :
+def commence_par(mot: str, prefixe : str) -> bool :
     return True if mot == prefixe +mot[len(prefixe):]  else False
-    
-print(commence_par("Lol", "L"))
+
+def finit_par(mot :str, suffixe: str) -> bool :
+    return True if mot == mot[:len(mot)-len(suffixe)] + suffixe else False
+
+def finissent_par(lst_mot : list, suffixe: str) -> list: 
+    return [mot for mot in lst_mot if finit_par(mot, suffixe)]
+
+def commencent_par(lst_mot :list, prefixe:str) -> list : 
+    return [mot for mot in lst_mot if commence_par(mot, prefixe)]
+
+def liste_mots (lst_mot : list, prefixe : str, suffixe :str, n :int) -> list: 
+    return finissent_par(commencent_par(mots_Nlettres(lst_mot, 5), "j"),"r")
+
+def dictionnaire(fichier) -> list:
+    with open(fichier,"r") as file : #with : Le fichier est automatiquement fermé à la fin du bloc "with"
+        return [ligne.rstrip("\n") for ligne in file ]
+# .rstrip() -> supprimer toute la partie gauche lorque qu'il trouve le séparateur (par défaut les espaces)

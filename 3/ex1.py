@@ -38,5 +38,6 @@ def is_mail(str_arg:str) -> tuple[int, int]:
             result = (0,3)
     return result
 
+# faire la version REGEX
 
 print(is_mail("aaa@mom.fr"))

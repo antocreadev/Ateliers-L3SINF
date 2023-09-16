@@ -1,30 +1,29 @@
-# Bienvenue dans l'Ateliers 🎨🧠
+# Welcome to the Workshop 🎨🧠
 
-## À propos de ce répertoire
+## About This Repository
 
-L'Atelier est bien plus qu'un simple répertoire de cours. C'est un lieu où la magie de l'informatique se mélange à l'art de l'apprentissage.
+The Workshop is more than just a course directory. It's a place where the magic of computing blends with the art of learning.
 
-## Qu'est-ce que vous trouverez dans l'Atelier ?
+## What You'll Find in the Workshop
 
-- 📚 Des PDF : Les énoncés des exercices.
+- 📚 PDFs: Exercise instructions.
 
-- 🐍 Des fichiers Python : Mes proposition à la résolution des exercices.
+- 🐍 Python Files: My proposed solutions to the exercises.
 
-## Comment naviguer dans l'Atelier ?
+## How to Navigate the Workshop
 
-📂 **Répertoires des ateliers** : Chaque Ateliers à un numéro (0,1,2,3, etc.). Allez-y pour trouver les PDF avec mes propostions aux exercices.
+📂 **Workshop Directories**: Each Workshop is numbered (0,1,2,3, etc.). Go there to find PDFs with my proposed exercise solutions.
 
+## Contribute to the Workshop
 
-## Contribuer à l'Atelier
+The Workshop is an open space. If you have ideas or contributions, don't hesitate to create issues. Together, we can create something truly exceptional.
 
-L'Atelier est un espace ouvert. Si vous avez des idées, des contributions, n'hésitez pas à nous faire des issues. Ensemble, nous pouvons créer quelque chose de vraiment exceptionnel.
+## Stay Connected
 
-## Restons en contact
-
-- [Linkedin](https://fr.linkedin.com/in/anthony-menghi)
+- [LinkedIn](https://www.linkedin.com/in/anthony-menghi)
 - [Instagram](https://www.instagram.com/antocrea.dev/)
 - [Twitter(X)](https://twitter.com/antocreadev)
 
-N'oubliez pas : l'art de la programmation commence ici à l'Atelier. Laissez votre créativité s'épanouir, et ensemble, construisons un monde où l'informatique est une toile infinie d'opportunités.
+Remember: the art of programming begins here at the Workshop. Let your creativity flourish, and together, let's build a world where computing is an endless canvas of opportunities.
 
 🎨✨ Happy coding! ✨🎨

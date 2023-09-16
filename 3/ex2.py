@@ -2,13 +2,11 @@ def mots_Nlettres(lst_mot: list, n:int) -> list:
     return [mot for mot in lst_mot if len(mot)<=n]
 
 def commence_par(mot: str, prefixe : str) -> bool :
-    # return True if mot == prefixe +mot[len(prefixe):]  else False
     return mot == prefixe +mot[len(prefixe):] 
 
 print(commence_par("aa", "a"))
 
 def finit_par(mot :str, suffixe: str) -> bool :
-    # return True if mot == mot[:len(mot)-len(suffixe)] + suffixe else False
     return mot == mot[:len(mot)-len(suffixe)] + suffixe
     
 def finissent_par(lst_mot : list, suffixe: str) -> list: 

@@ -1,6 +1,6 @@
 from random import randint
 
-def gen_list_random_int(int_binf: int=0, int_bsup: int=10)-> list : 
+def gen_list_random_int(int_binf:int=0, int_bsup: int=10)-> list : 
     """
     Génère une liste de nombres entiers aléatoires compris entre 'int_binf' (inclus) et 'int_bsup' (inclus).
 
@@ -14,8 +14,8 @@ def gen_list_random_int(int_binf: int=0, int_bsup: int=10)-> list :
     return [randint(int_binf, int_bsup) for i in range(int_bsup)]
 
 # print(gen_list_random_int(0,10))
-
-def mix_list(list_to_mix) : 
+# range(len(new_liste) - 1, 0, -1)
+def mix_list(list_to_mix: list) -> list:
     """
     Mélange les éléments d'une liste 'list_to_mix' de manière aléatoire et renvoie la nouvelle liste mélangée.
 
@@ -24,17 +24,15 @@ def mix_list(list_to_mix) :
     :return: Liste mélangée.
     :rtype: list
     """
-    new_liste = []
-    while len(new_liste) < len(list_to_mix) : 
-        indice_random = randint(0,len(list_to_mix)-1)
-        if list_to_mix[indice_random] not in  new_liste: 
-            new_liste.append(list_to_mix[indice_random])
-    return new_liste
-
-print([1,2,3,4,5,6,7,8,9,10])
-print(mix_list([1,2,3,4,5,6,7,8,9,10]))
-
-
+    indices_list = list(range(len(list_to_mix)))
+    result = []
+    longueur_list = len(indices_list)
+    while indices_list:
+        random_index = indices_list.pop(randint(0, longueur_list - 1))
+        result.append(list_to_mix[random_index])
+        longueur_list -= 1
+    return result
+print(mix_list([1,2,3,4,5,6]))
 def choose_element_list(list_in_which_to_choose : list) : 
     """
     Sélectionne aléatoirement un élément de la liste 'list_in_which_to_choose' et le renvoie.
@@ -90,4 +88,4 @@ def test():
     print('La sous liste extraite est',sublist) 
     print('Liste de départ après appel de la fonction est',lst_sorted)
     
-test()
+# test()

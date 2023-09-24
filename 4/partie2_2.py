@@ -29,7 +29,10 @@ def perf(function1 : callable, function2 : callable, taille_list : int):
         elapsed_time_pc_suffle = end_pc_perf_shuffle-start_pc_perf_suffle
         moyenne_elapsed_time_pc_mix_suffle += elapsed_time_pc_suffle 
     return [moyenne_elapsed_time_pc_mix_list, moyenne_elapsed_time_pc_mix_suffle]   
-   
+
+    
+
+
 def main() : 
     TEMPS_EXEC = [perf(sorted, sort_list, 10), perf(sorted, sort_list, 50), perf(sorted, sort_list, 500), perf(sorted, sort_list, 5000), perf(sorted, sort_list, 10000)]
     
@@ -50,8 +53,6 @@ def main() :
     fig.savefig("temps_exec.png") 
     pyplot.show() 
     
-main()
-print(sort_list([88,3,6,9,8,9,7,66,1]))
+# main()
 
-print(perf(sorted, sort_list, 100))
 

@@ -84,17 +84,16 @@ def runGame() :
         # la lettre est dans le mot il l'user de ne l'a pas encore choisi
         else :
             concat_indice += places_lettre(letter, word)
-            print(concat_indice)
             letter_find.append(letter)
             
             for k in range(len(draw_errors[error])) : 
                 print(draw_errors[error][k])
             print(outputStr(word, concat_indice))
             
-    if len(letter_find) == len(word) : 
-        print('gagné')
     if error == 5 : 
         print('perdu')
+    else  : 
+        print('gagné')
             
 
             

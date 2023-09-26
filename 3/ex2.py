@@ -92,5 +92,5 @@ def dictionnaire(fichier) -> list:
     """
     with open(fichier,"r") as file : #with : Le fichier est automatiquement fermé à la fin du bloc "with"
         return [ligne.rstrip("\n") for ligne in file]
-print(dictionnaire("littre.txt"))
-# .rstrip() -> supprimer toute la partie droite lorque qu'il trouve le séparateur (par défaut les espaces)
+print(dictionnaire(".txt"))
+

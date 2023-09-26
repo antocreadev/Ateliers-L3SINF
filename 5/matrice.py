@@ -20,6 +20,7 @@ def searchsorted_perso(arr : array, searched : int, acc=0) :
             return acc
         else : 
             return lambda : searchsorted_perso(arr[1:], searched,acc+1) # Continuation-passing style
+
 # trampoline pattern 
 def trampoline(func):
     while callable(func):

@@ -28,5 +28,27 @@ def matriceAdjacencePond(sommets,arcs) :
     return result
 print(matriceAdjacencePond(liste_sommets, lsite_arcs_pond))
 
+print("\n", "----------", "\n")
+
 def lireMatriceFichier(nomfichier) : 
-    pass
+    with open(nomfichier,"r") as file : #with : Le fichier est automatiquement fermé à la fin du bloc "with"
+        return array([ligne.rstrip("\n") for ligne in file])
+# print(lireMatriceFichier("./5/graph0.txt"))
+
+
+# matrice.shape -> renvoie ligne, colonne (row,col)
+def tousLesSommets(mat) : 
+    row, col = mat.shape 
+    result = []
+    for k in range(row) : 
+        for i in range(col) : 
+            if (mat[k][i] != 0) : 
+                result.append(([k], [i]))
+    return result
+                
+print(tousLesSommets(matriceAdjacencePond(liste_sommets, lsite_arcs_pond)))
+
+
+
+
+

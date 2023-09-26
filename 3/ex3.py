@@ -1,3 +1,15 @@
+import random
+# const
+lst =["paris","londres","madrid","berlin","new-york"] 
+lst_len = len(lst) 
+
+draw_errors = [["|---] ", "|   ", "|  ","|    "],
+               ["|---] ", "| O ", "|  ","|    "],
+               ["|---] ", "| O ", "| | ","|    "],
+               ["|---] ", "| O ", "| T ","|    "],
+               ["|---] ", "| O ", "| T ","|/   "],
+               ["|---] ", "| O ", "| T ","|/ \ "] ]
+
 def places_lettre(ch: str, mot: str) -> list:
     """
     Retourne une liste des positions (indices) où la lettre 'ch' apparaît dans le mot 'mot'.
@@ -9,6 +21,11 @@ def places_lettre(ch: str, mot: str) -> list:
     :return: Liste des positions (indices) où 'ch' apparaît dans 'mot'.
     :rtype: list
     """
+    result = []
+    for k in range(len(mot)) : 
+        if mot[k] == ch : 
+            result.append(k)
+    return result
 
 def test():
     """
@@ -29,9 +46,59 @@ def outputStr(mot: str, lpos: list) -> str:
     :type lpos: list
     """
     longueur = len(mot)
-    print(lpos)
-    for i in range(len(mot)):
+    result = ""
+    for i in range(longueur):
         if i in lpos:
-            print(mot[i], end="")
+            result += (mot[i])
         else:
-            print("-", end="")
+            result += "-"
+    return result
+            
+
+# concat_outputStr(outputStr("bonjour", [0, 1]),outputStr("bonjour", places_lettre("o", "bonjour")) )
+
+def runGame() : 
+    error = 0
+    # choice word in liste
+    indice_word_random = random.randint(0, lst_len)
+    word = lst[indice_word_random]
+    
+    concat_indice = []
+    letter_find = []
+    
+    while error < 5 and len(letter_find) != len(word): 
+        #choice word
+        letter = input("choisi lettre : ")
+
+        # si la lettre n'est pas dans le mot
+        if places_lettre(letter, word) == [] : 
+            error += 1
+            for k in range(len(draw_errors[error])) : 
+                print(draw_errors[error][k])
+            print(outputStr(word, concat_indice))
+            
+        # la lettre est dans le motn mais il a déjà choisi
+        elif letter in letter_find : 
+            error += 1
+            
+        # la lettre est dans le mot il l'user de ne l'a pas encore choisi
+        else :
+            concat_indice += places_lettre(letter, word)
+            print(concat_indice)
+            letter_find.append(letter)
+            
+            for k in range(len(draw_errors[error])) : 
+                print(draw_errors[error][k])
+            print(outputStr(word, concat_indice))
+            
+    if len(letter_find) == len(word) : 
+        print('gagné')
+    if error == 5 : 
+        print('perdu')
+            
+
+            
+runGame()
+            
+        
+        

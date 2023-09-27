@@ -80,6 +80,3 @@ def separe(lst : list) -> tuple :
             pile[0].append(lst[0])
         return pile
 print(separe(LISTE))
-
-# recursivité terminale
-

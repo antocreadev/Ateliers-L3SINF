@@ -3,29 +3,29 @@ class ManipRob {
         Robot toto = new Robot("Toto", 10, 20, Robot.SUD);
         Robot titi = new Robot("Titi");
 
-        // Avancer des robots 
-        toto.moveForward();
-        toto.moveForward();
-        toto.moveForward();
+        // Avancer des robots
+        toto.deplacer();
+        toto.deplacer();
+        toto.deplacer();
 
-        titi.moveForward();
-        titi.moveForward();
+        titi.deplacer();
+        titi.deplacer();
 
-        // changement de direction 
+        // changement de direction
         toto.setOrientation(Robot.EST);
         titi.setOrientation(Robot.OUEST);
 
-        // Avancer 
-        toto.moveForward();
-        toto.moveForward();
-        toto.moveForward();
+        // Avancer
+        toto.deplacer();
+        toto.deplacer();
+        toto.deplacer();
 
-        titi.moveForward();
-        titi.moveForward();
+        titi.deplacer();
+        titi.deplacer();
 
-        // reculer 
-        System.out.println(toto.moveBack());
-        System.out.println(titi.moveBack());
+        // reculer
+        toto.deplacer();
+        titi.deplacer();
 
         System.out.println(toto);
     }

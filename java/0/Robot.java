@@ -38,24 +38,21 @@ class Robot {
         }
     }
 
-    public void moveForward() {
-        if (this.orientation == 1 || this.orientation == 2) {
+    public void deplacer() {
+        if (this.orientation == NORD) {
             this.y++;
-        } else {
+        } else if (this.orientation == EST) {
             this.x++;
-        }
-    }
-
-    public String moveBack() {
-        if (this.x != 0 && this.y != 0) {
-            if (this.orientation == 1 || this.orientation == 2) {
-                this.y--;
-            } else {
-                this.x--;
+        } else if (this.orientation == SUD) {
+            this.y--;
+            if (this.y < 0) {
+                this.y = 0;
             }
-            return "Déplacement en arrière vous êtes à " + Integer.toString(this.x) + "," + Integer.toString(this.y);
-        } else {
-            return "Vous ne pouvez pas plus reculer.";
+        } else if (this.orientation == OUEST) {
+            this.x--;
+            if (this.x < 0) {
+                this.x = 0;
+            }
         }
     }
 
@@ -64,7 +61,7 @@ class Robot {
                 + Integer.toString(this.orientation);
     }
 
-    // surchargement de la méthode tostring (méthode « héritée » de la classe Object)
+    // redefinition de la méthode tostring (méthode « héritée » de la classe Object)
     public String toString() {
         return this.name + this.ref + Integer.toString(this.x) + Integer.toString(this.y)
                 + Integer.toString(this.orientation);

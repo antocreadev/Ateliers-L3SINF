@@ -4,31 +4,33 @@ class De{
     private int nbFaces;
     protected static Random r = new Random();
 
-    public final static int minimumNbFaces= 3;
-    public final static int maximumNbFaces= 120;
+    public final static int MINIMUM_NBFACES= 3;
+    public final static int MAXIMUM_NBFACES= 120;
+
+    private final static int DEFAULT_NBFACES = 6;
 
     private static int counter = 0; // static : variable de Class
 
-
+    // constructor 
     public De(int nbFaces, String name){
-        this.name = name; 
-        this.nbFaces = setNbFaces(nbFaces);
+        setName(name);
+        setNbFaces(nbFaces);
         counter++;
     }
 
     // @Overload
     public De(int nbFaces){
-        this(nbFaces, "Dé n°" + Integer.toString(counter));
+        this(nbFaces, "");
     }
 
     // @Overload
     public De(String name){
-        this(6, name ); 
+        this(DEFAULT_NBFACES, name); 
     }
 
     // @Overload
     public De(){
-        this(6, "Dé n°" + Integer.toString(counter));
+        this(DEFAULT_NBFACES, null);
     }
 
     // méthodes
@@ -37,13 +39,14 @@ class De{
     }
 
     public Integer setNbFaces(int nbFaces){
-        int result = minimumNbFaces;
-        if(nbFaces>= minimumNbFaces && nbFaces<=maximumNbFaces){
+        int result = DEFAULT_NBFACES;
+        if(nbFaces>= MINIMUM_NBFACES && nbFaces<=MAXIMUM_NBFACES){
             this.nbFaces = nbFaces;
             result = nbFaces;
         }
         else{
-             System.err.println("erreur"); // print erreur 
+             System.err.println("erreur : le nombre de face doit être inferieur à " + Integer.toString(MAXIMUM_NBFACES) + " et superieur à " + Integer.toString(MINIMUM_NBFACES) + ". Ansi la valeur va être changer par une valeur par défaut : " + Integer.toString(DEFAULT_NBFACES)); // print erreur 
+             this.nbFaces = DEFAULT_NBFACES;
         }
         return result;
     }
@@ -70,6 +73,18 @@ class De{
         return counter;
     }
 
+    private String setName(String name){
+        String result = "Dé n°" + Integer.toString(counter);
+        if (name== null || name == "" || name==" "){
+            this.name = result;
+        }
+        else{
+            this.name= name;
+            result = name;
+        }
+        return result;
+    }
+
     @Override
     public String toString(){
         return "name : "+this.name + " nombre de faces : " + Integer.toString(this.nbFaces);
@@ -91,11 +106,6 @@ class De{
 
     public static void main(String[] args) {
         De de1 = new De("de1");
-        De de2 = new De("de1");
-        Object o1 = new De("de1"); // up casting 
-        System.out.println(de1);
-        System.out.println(de1.lancer(2));
-        System.out.println(de1.equals(o1));
-        System.out.println(de1);
+        System.out.println(new De(119999, "chose"));
     }
 }

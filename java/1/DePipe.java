@@ -28,7 +28,7 @@ public class DePipe extends De {
         return result;
         */
         // r est protected donc j'ai accès dans son enfant (et dans le package)
-        return r.nextInt(1, this.getNbFaces()+1);
+        return r.nextInt(this.getValueMinimum(), this.getNbFaces()+1);
     }
     public static void main(String[] args) {
         DePipe dePipe1 = new DePipe(5, "depipos", 6);

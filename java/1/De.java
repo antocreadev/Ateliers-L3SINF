@@ -1,7 +1,7 @@
 import java.util.*;
 class De{
     private String name;
-    private int nbFaces;
+    protected int nbFaces;
     protected static Random r = new Random();
 
     public final static int MINIMUM_NBFACES= 3;
@@ -38,17 +38,14 @@ class De{
         return this.nbFaces;
     }
 
-    public Integer setNbFaces(int nbFaces){
-        int result = DEFAULT_NBFACES;
+    public void setNbFaces(int nbFaces){
         if(nbFaces>= MINIMUM_NBFACES && nbFaces<=MAXIMUM_NBFACES){
             this.nbFaces = nbFaces;
-            result = nbFaces;
         }
         else{
              System.err.println("erreur : le nombre de face doit être inferieur à " + Integer.toString(MAXIMUM_NBFACES) + " et superieur à " + Integer.toString(MINIMUM_NBFACES) + ". Ansi la valeur va être changer par une valeur par défaut : " + Integer.toString(DEFAULT_NBFACES)); // print erreur 
              this.nbFaces = DEFAULT_NBFACES;
         }
-        return result;
     }
 
     public Integer lancer(){

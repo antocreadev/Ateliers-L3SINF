@@ -4,7 +4,7 @@ public class DePipe extends De {
     // constructor 
     public DePipe(int valueMinimum, String name, int nbFaces){
         super(nbFaces, name); // rappelle le constructeur parent
-        if (valueMinimum>=0 && valueMinimum<=maximumNbFaces){
+        if (valueMinimum>=0 && valueMinimum<=MAXIMUM_NBFACES){
             this.valueMinimum = valueMinimum;
         }
         else{

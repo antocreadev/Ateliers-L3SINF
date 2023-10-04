@@ -2,7 +2,7 @@ import java.util.*;
 class De{
     private String name;
     private int nbFaces;
-    private static Random r = new Random();
+    protected static Random r = new Random();
 
     public final static int minimumNbFaces= 3;
     public final static int maximumNbFaces= 120;
@@ -14,7 +14,6 @@ class De{
         this.name = name; 
         this.nbFaces = setNbFaces(nbFaces);
         counter++;
-
     }
 
     // @Overload
@@ -59,7 +58,6 @@ class De{
     public Integer lancer(int nbLancer){
         int result= lancer();
         for (int i=1; i<nbLancer; ++i){
-            System.out.println(i);
             int nbAleatoire =  lancer();
             if (result< nbAleatoire){
                 result = nbAleatoire;

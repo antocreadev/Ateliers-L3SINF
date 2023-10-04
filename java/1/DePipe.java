@@ -1,11 +1,9 @@
 public class DePipe extends De {
     private int valueMinimum; 
-    private int nombre; 
-    private int name;
 
     // constructor 
-    public DePipe(int valueMinimum, int nombre, String name){
-        // super
+    public DePipe(int valueMinimum, String name, int nbFaces){
+        super(nbFaces, name); // rappelle le constructeur parent
         if (valueMinimum>=0 && valueMinimum<=maximumNbFaces){
             this.valueMinimum = valueMinimum;
         }
@@ -19,10 +17,24 @@ public class DePipe extends De {
         return this.valueMinimum;
     }
 
+    @Override
+    public Integer lancer(){
+        /* va appeler la methode lancer parent tant que le result est inferieur à la valueMinimum
+        int result;
+        do {
+            result  = super.lancer(); // super. -> va appeler la méthode dans le parent
+            System.out.println(result);
+        }while (result < this.valueMinimum);
+        return result;
+        */
+        // r est protected donc j'ai accès dans son enfant (et dans le package)
+        return r.nextInt(1, this.getNbFaces()+1);
+    }
     public static void main(String[] args) {
-        DePipe dePipe1 = new DePipe(1222);
+        DePipe dePipe1 = new DePipe(5, "depipos", 6);
         System.out.println(dePipe1.getValueMinimum());
-        System.out.println(dePipe1.getNbFaces());
+        System.out.println(dePipe1);
+        System.out.println(dePipe1.lancer());
     }
 }
 

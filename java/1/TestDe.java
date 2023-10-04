@@ -12,6 +12,8 @@ public class TestDe {
         System.out.println(de3.getNbFaces());
 
         System.out.println("nombre de de : " + De.getCounter());
+
+        System.out.println(de2.lancer());
         
 
     }

@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.List;
 
 public class DeFaceAutre extends De{
     private ArrayList<Object> elementsInDe;
